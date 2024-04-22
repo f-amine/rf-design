@@ -1,33 +1,245 @@
-@tailwind base;
 @tailwind components;
 @tailwind utilities;
+@tailwind base;
+
+@layer components {
+  .all-\[unset\] {
+    all: unset;
+  }
+}
 
 :root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+  --corner-radius-12: 12px;
+  --corner-radius-16-duplicate: 16px;
+  --corner-radius-4-duplicate: 4px;
+  --corner-radius-8-duplicate: 8px;
+  --corner-radius-80-duplicate: 80px;
+  --icon-size-20-duplicate: 20px;
+  --icon-size-24-duplicate: 24px;
+  --icon-size-28-duplicate: 28px;
+  --icon-size-32: 32px;
+  --icon-size-40: 40px;
+  --icon-size-48: 48px;
+  --icon-size-80: 80px;
+  --show-icon-show-icon: initial;
+  --show-text-show-text: initial;
+  --spacing-16: 16px;
+  --spacing-20: 20px;
+  --spacing-24: 24px;
+  --spacing-28: 28px;
+  --spacing-4: 4px;
+  --spacing-8: 8px;
+  --stroke: rgba(247, 248, 248, 1);
+  --themes-black-10: rgba(28, 28, 28, 0.1);
+  --themes-black-100: rgba(28, 28, 28, 1);
+  --themes-black-20: rgba(28, 28, 28, 0.2);
+  --themes-black-40: rgba(28, 28, 28, 0.4);
+  --themes-black-5: rgba(28, 28, 28, 0.05);
+  --themes-black-80: rgba(28, 28, 28, 0.8);
+  --themes-logo-color-logo: rgba(112, 148, 244, 1);
+  --themes-logo-color-logo-2: rgba(79, 80, 127, 1);
+  --themes-primary-brand: rgba(28, 28, 28, 1);
+  --themes-secondary-indigo: rgba(149, 164, 252, 1);
+  --themes-secondary-purple: rgba(198, 199, 248, 1);
+  --themes-white-10: rgba(255, 255, 255, 0.1);
+  --themes-white-100: rgba(255, 255, 255, 1);
+  --themes-white-40: rgba(255, 255, 255, 0.4);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+/*
+
+To enable a theme in your HTML, simply add one of the following data attributes to an HTML element, like so:
+
+<body data-spacing-mode="standard">
+    <!-- the rest of your content -->
+</body>
+
+You can apply the theme on any DOM node, not just the `body`
+
+*/
+
+[data-spacing-mode="standard"] {
+  --spacing-16: 16px;
+  --spacing-20: 20px;
+  --spacing-24: 24px;
+  --spacing-28: 28px;
+  --spacing-4: 4px;
+  --spacing-8: 8px;
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+[data-spacing-mode="expanded-4"] {
+  --spacing-16: 20px;
+  --spacing-20: 24px;
+  --spacing-24: 28px;
+  --spacing-28: 32px;
+  --spacing-4: 8px;
+  --spacing-8: 12px;
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+[data-spacing-mode="expanded-8"] {
+  --spacing-16: 24px;
+  --spacing-20: 28px;
+  --spacing-24: 32px;
+  --spacing-28: 36px;
+  --spacing-4: 12px;
+  --spacing-8: 16px;
+}
+
+[data-spacing-mode="condensed-4"] {
+  --spacing-16: 12px;
+  --spacing-20: 16px;
+  --spacing-24: 20px;
+  --spacing-28: 24px;
+  --spacing-4: 0px;
+  --spacing-8: 4px;
+}
+
+[data-corner-radius-mode="standard"] {
+  --corner-radius-12: 12px;
+  --corner-radius-16-duplicate: 16px;
+  --corner-radius-4-duplicate: 4px;
+  --corner-radius-8-duplicate: 8px;
+  --corner-radius-80-duplicate: 80px;
+}
+
+[data-corner-radius-mode="expanded-4"] {
+  --corner-radius-12: 16px;
+  --corner-radius-16-duplicate: 20px;
+  --corner-radius-4-duplicate: 8px;
+  --corner-radius-8-duplicate: 12px;
+  --corner-radius-80-duplicate: 84px;
+}
+
+[data-corner-radius-mode="expanded-8"] {
+  --corner-radius-12: 20px;
+  --corner-radius-16-duplicate: 24px;
+  --corner-radius-4-duplicate: 12px;
+  --corner-radius-8-duplicate: 16px;
+  --corner-radius-80-duplicate: 88px;
+}
+
+[data-corner-radius-mode="condensed-4"] {
+  --corner-radius-12: 8px;
+  --corner-radius-16-duplicate: 12px;
+  --corner-radius-4-duplicate: 0px;
+  --corner-radius-8-duplicate: 4px;
+  --corner-radius-80-duplicate: 76px;
+}
+
+[data-icon-size-mode="standard"] {
+  --icon-size-20-duplicate: 20px;
+  --icon-size-24-duplicate: 24px;
+  --icon-size-28-duplicate: 28px;
+  --icon-size-32: 32px;
+  --icon-size-40: 40px;
+  --icon-size-48: 48px;
+  --icon-size-80: 80px;
+}
+
+[data-icon-size-mode="expanded-4"] {
+  --icon-size-20-duplicate: 24px;
+  --icon-size-24-duplicate: 28px;
+  --icon-size-28-duplicate: 32px;
+  --icon-size-32: 36px;
+  --icon-size-40: 44px;
+  --icon-size-48: 52px;
+  --icon-size-80: 84px;
+}
+
+[data-icon-size-mode="expanded-8"] {
+  --icon-size-20-duplicate: 28px;
+  --icon-size-24-duplicate: 32px;
+  --icon-size-28-duplicate: 36px;
+  --icon-size-32: 40px;
+  --icon-size-40: 48px;
+  --icon-size-48: 56px;
+  --icon-size-80: 88px;
+}
+
+[data-icon-size-mode="condensed-4"] {
+  --icon-size-20-duplicate: 16px;
+  --icon-size-24-duplicate: 20px;
+  --icon-size-28-duplicate: 24px;
+  --icon-size-32: 28px;
+  --icon-size-40: 36px;
+  --icon-size-48: 44px;
+  --icon-size-80: 76px;
+}
+
+[data-themes-mode="pastel-light"] {
+  --themes-black-10: rgba(28, 28, 28, 0.1);
+  --themes-black-100: rgba(28, 28, 28, 1);
+  --themes-black-20: rgba(28, 28, 28, 0.2);
+  --themes-black-40: rgba(28, 28, 28, 0.4);
+  --themes-black-5: rgba(28, 28, 28, 0.05);
+  --themes-black-80: rgba(28, 28, 28, 0.8);
+  --themes-logo-color-logo-2: rgba(79, 80, 127, 1);
+  --themes-primary-brand: rgba(28, 28, 28, 1);
+  --themes-secondary-indigo: rgba(149, 164, 252, 1);
+  --themes-secondary-purple: rgba(198, 199, 248, 1);
+  --themes-white-10: rgba(255, 255, 255, 0.1);
+  --themes-white-100: rgba(255, 255, 255, 1);
+  --themes-white-40: rgba(255, 255, 255, 0.4);
+}
+
+[data-themes-mode="pastel-dark"] {
+  --themes-black-10: rgba(255, 255, 255, 0.1);
+  --themes-black-100: rgba(255, 255, 255, 1);
+  --themes-black-20: rgba(255, 255, 255, 0.2);
+  --themes-black-40: rgba(255, 255, 255, 0.4);
+  --themes-black-5: rgba(255, 255, 255, 0.1);
+  --themes-black-80: rgba(255, 255, 255, 0.8);
+  --themes-logo-color-logo-2: rgba(237, 237, 255, 1);
+  --themes-primary-brand: rgba(198, 199, 248, 1);
+  --themes-secondary-indigo: rgba(149, 164, 252, 1);
+  --themes-secondary-purple: rgba(198, 199, 248, 1);
+  --themes-white-10: rgba(28, 28, 28, 0.1);
+  --themes-white-100: rgba(28, 28, 28, 1);
+  --themes-white-40: rgba(28, 28, 28, 0.4);
+}
+
+[data-themes-mode="bright-light"] {
+  --themes-black-10: rgba(46, 52, 62, 0.1);
+  --themes-black-100: rgba(46, 52, 62, 1);
+  --themes-black-20: rgba(46, 52, 62, 0.2);
+  --themes-black-40: rgba(46, 52, 62, 0.4);
+  --themes-black-5: rgba(46, 52, 62, 0.05);
+  --themes-black-80: rgba(46, 52, 62, 0.8);
+  --themes-logo-color-logo-2: rgba(79, 80, 127, 1);
+  --themes-secondary-indigo: rgba(88, 86, 214, 1);
+  --themes-secondary-purple: rgba(175, 82, 222, 1);
+  --themes-white-10: rgba(255, 255, 255, 0.1);
+  --themes-white-100: rgba(255, 255, 255, 1);
+  --themes-white-40: rgba(255, 255, 255, 0.4);
+}
+
+[data-themes-mode="bright-dark"] {
+  --themes-black-10: rgba(255, 255, 255, 0.1);
+  --themes-black-100: rgba(255, 255, 255, 1);
+  --themes-black-20: rgba(255, 255, 255, 0.2);
+  --themes-black-40: rgba(255, 255, 255, 0.4);
+  --themes-black-5: rgba(255, 255, 255, 0.1);
+  --themes-black-80: rgba(255, 255, 255, 0.8);
+  --themes-logo-color-logo-2: rgba(237, 237, 255, 1);
+  --themes-secondary-indigo: rgba(88, 86, 214, 1);
+  --themes-secondary-purple: rgba(175, 82, 222, 1);
+  --themes-white-10: rgba(28, 28, 28, 0.1);
+  --themes-white-100: rgba(28, 28, 28, 1);
+  --themes-white-40: rgba(28, 28, 28, 0.4);
+}
+
+[data-show-icon-mode="true"] {
+  --show-icon-show-icon: initial;
+}
+
+[data-show-icon-mode="false"] {
+  --show-icon-show-icon: none;
+}
+
+[data-show-text-mode="true"] {
+  --show-text-show-text: initial;
+}
+
+[data-show-text-mode="false"] {
+  --show-text-show-text: none;
 }
